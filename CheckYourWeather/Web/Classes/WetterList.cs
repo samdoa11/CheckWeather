@@ -7,5 +7,6 @@ namespace Web.Classes
 {
     public class WetterList
     {
+        public int Test { get; set; }
     }
 }
