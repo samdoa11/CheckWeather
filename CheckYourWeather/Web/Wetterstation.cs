@@ -7,6 +7,10 @@ namespace Web
 {
     public class Wetterstation
     {
+        private Standort m_Standort;
+        private Wetterwert m_Wetterwert;
+        
+
         public void createServerConnection()
         {
 
