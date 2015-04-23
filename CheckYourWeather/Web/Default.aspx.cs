@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Web.Classes;
 
 namespace Web
 {
@@ -17,6 +18,8 @@ namespace Web
         protected void Button1_Click(object sender, EventArgs e)
         {
             labAusgabe.Text = "adsf";
+            //WetterList we = new WetterList();
+
         }
     }
 }
