@@ -5,6 +5,11 @@ using System.Web;
 
 namespace Web
 {
+    /// <summary>
+    /// Klasse, die Werte für den Standort der Wetterstationen
+    /// verwaltet.
+    /// Autor: Lisa
+    /// </summary>
     public class Standort
     {
         public int PLZ { get; set; }

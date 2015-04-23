@@ -5,6 +5,11 @@ using System.Web;
 
 namespace Web
 {
+    /// <summary>
+    /// Klasse, die Wetterwerte verwaltet, mit denen später
+    /// gearbeitet wird.
+    /// Autor: Lisa
+    /// </summary>
     public class Wetterwert
     {
         public float Temperatur { get; set; }
