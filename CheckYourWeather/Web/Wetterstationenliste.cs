@@ -77,7 +77,7 @@ namespace Web
 
         public IEnumerator<Wetterstation> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return list.GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
