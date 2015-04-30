@@ -8,6 +8,7 @@ namespace Web
     public class Wetterstationenliste:IList<Wetterstation>
     {
         private List<Wetterstation> list;
+        private DAL m_DAL;
 
         public Wetterstationenliste()
         {
@@ -83,6 +84,18 @@ namespace Web
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Wandelt die String-Liste in Wetterdaten um.
+        /// Author grudoa11
+        /// </summary>
+        public void ConvertCSV()
+        {
+            List<string> input = m_DAL.readOut();
+            foreach(string str in input)
+                Console.WriteLine(str);
+
         }
     }
 }
