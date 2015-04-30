@@ -11,16 +11,18 @@ namespace Serverbindung
 
     /// <summary>
     /// @Autor: KOLLER Philipp
+    /// Überarbeitet: Lisa Schwarz
     /// 
     /// m_WebClient: ist für die Verbindung zu der Webseite nötig
     /// m_Url: verwaltet die URL, wo die Daten liegen
+    /// m_Speicherort: Der Speicherort wird einmalig im Konstruktor zugewiesen.
     /// </summary>
     public class ServerConnector
     {
 
         private WebClient m_WebClient;
         private String m_Url;
-        
+        private String m_Speicherort;
 
         public String URL
         {
@@ -34,6 +36,11 @@ namespace Serverbindung
             m_WebClient = new WebClient();
         }
 
+        public ServerConnector()
+        {
+            m_Speicherort = @"F:\Schule\4AHIF\FHKärnten\Projekt\CheckYourWeather\Serververbindung\Serverbindung\Test\test.csv";
+        }
+
         /// <summary>
         /// Die Methode saveCSV() speichert die Daten von der ZAMG auf den Server.
         /// </summary>
@@ -43,10 +50,10 @@ namespace Serverbindung
             try
             {
                 WebClient m_WebClient = new WebClient();
-                String speicherort = @"F:\Schule\4AHIF\FHKärnten\Projekt\CheckYourWeather\Serververbindung\Serverbindung\Test\test.csv";
-                m_WebClient.DownloadFile(m_Url, speicherort);
+                
+                m_WebClient.DownloadFile(m_Url, m_Speicherort);
 
-                return speicherort;
+                return m_Speicherort;
             } 
             catch(Exception exe)
             {
