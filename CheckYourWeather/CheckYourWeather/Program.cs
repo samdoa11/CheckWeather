@@ -14,4 +14,8 @@ namespace CheckYourWeather
             //kjhkjh
         }
     }
+
+    public class LandSteiermark {
+
+    }
 }
