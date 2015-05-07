@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Serverbindung;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Web.Classes;
 
 namespace Web
 {
@@ -9,10 +11,15 @@ namespace Web
     {
         private List<Wetterstation> list;
         private DAL m_DAL;
+        private ServerConnector m_ServerCon;
 
         public Wetterstationenliste()
         {
             list = new List<Wetterstation>();
+
+
+            //m_ServerCon = new ServerConnector(String url);
+            //m_ServerCon.saveCSV();
         }
         public int IndexOf(Wetterstation item)
         {
