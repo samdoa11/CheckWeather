@@ -154,6 +154,11 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+<<<<<<< HEAD
 CheckYourWeather/Web/Classes/DAL.cs
 *.cs
 CheckYourWeather/Web/Wetterstationenliste.cs
+=======
+CheckYourWeather/CheckYourWeather/CheckYourWeather.csproj
+*.csproj
+>>>>>>> origin/master

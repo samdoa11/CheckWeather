@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serverbindung;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,10 +11,19 @@ namespace Web
     {
         private List<Wetterstation> m_Wetterstationen;
         private DAL m_DAL;
+        private ServerConnector m_ServerCon;
 
         public Wetterstationenliste()
         {
+<<<<<<< HEAD
             m_Wetterstationen = new List<Wetterstation>();
+=======
+            list = new List<Wetterstation>();
+
+
+            m_ServerCon = new ServerConnector(@"http:\\www.zamg.ac.at\ogd\");
+            m_ServerCon.saveCSV();
+>>>>>>> origin/master
         }
         public int IndexOf(Wetterstation item)
         {

@@ -17,19 +17,5 @@ namespace Web
 
         
 
-        public void createServerConnection()
-        {
-
-        }
-
-        public void readOutFile()
-        {
-
-        }
-
-        public void convertCSV()
-        {
-
-        }
     }
 }

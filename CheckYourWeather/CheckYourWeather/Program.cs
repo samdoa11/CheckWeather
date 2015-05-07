@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.HtmlControls;
 
 namespace CheckYourWeather
 {
@@ -12,6 +13,14 @@ namespace CheckYourWeather
         {
             Console.WriteLine();
             //kjhkjh
+        }
+    }
+
+    public class LandSteiermark {
+        public int getIds()
+        {
+
+            return 1;
         }
     }
 }
