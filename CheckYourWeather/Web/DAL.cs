@@ -28,6 +28,7 @@ namespace Web.Classes
         {
             List<String> zeilen = new List<string>();
             String zeile = "";
+            this.m_StreamReader.ReadLine();
             while ((zeile = this.m_StreamReader.ReadLine()) != null)
             {
                 zeilen.Add(zeile);
