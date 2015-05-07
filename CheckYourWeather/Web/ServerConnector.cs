@@ -15,7 +15,7 @@ namespace Serverbindung
     /// 
     /// m_WebClient: ist für die Verbindung zu der Webseite nötig
     /// m_Url: verwaltet die URL, wo die Daten liegen
-    /// m_Speicherort: Der Speicherort wird einmalig im Konstruktor zugewiesen. (Ordner Data ist direkt im Projektordner)
+    /// m_Speicherort: Der Speicherort wird einmalig im Konstruktor zugewiesen.
     /// </summary>
     public class ServerConnector
     {
@@ -34,7 +34,11 @@ namespace Serverbindung
         {
             m_Url = url;
             m_WebClient = new WebClient();
-            m_Speicherort = @"\Data\data.csv";
+        }
+
+        public ServerConnector()
+        {
+            m_Speicherort = @"F:\Schule\4AHIF\FHKärnten\Projekt\CheckYourWeather\Serververbindung\Serverbindung\Test\test.csv";
         }
 
         /// <summary>
@@ -45,7 +49,6 @@ namespace Serverbindung
         {
             try
             {
-                WebClient m_WebClient = new WebClient();
                 
                 m_WebClient.DownloadFile(m_Url, m_Speicherort);
 
