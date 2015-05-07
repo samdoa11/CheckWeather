@@ -18,8 +18,8 @@ namespace Web
             list = new List<Wetterstation>();
 
 
-            //m_ServerCon = new ServerConnector(String url);
-            //m_ServerCon.saveCSV();
+            m_ServerCon = new ServerConnector(@"http:\\www.zamg.ac.at\ogd\");
+            m_ServerCon.saveCSV();
         }
         public int IndexOf(Wetterstation item)
         {
