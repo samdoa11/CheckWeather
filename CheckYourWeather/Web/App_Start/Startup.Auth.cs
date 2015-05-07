@@ -7,8 +7,6 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using System.Net.Http;
-using System.Web;
 using Web.Models;
 
 namespace Web
