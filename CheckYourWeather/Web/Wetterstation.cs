@@ -11,19 +11,5 @@ namespace Web
         private Wetterwert m_Wetterwert;
         
 
-        public void createServerConnection()
-        {
-
-        }
-
-        public void readOutFile()
-        {
-
-        }
-
-        public void convertCSV()
-        {
-
-        }
     }
 }
