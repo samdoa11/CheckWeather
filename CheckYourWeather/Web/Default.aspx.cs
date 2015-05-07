@@ -17,7 +17,14 @@ namespace Web
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            labAusgabe.Text = "adsf";
+            //@Autor Lisa Schwarz
+            Wetterstationenliste w = new Wetterstationenliste();
+            foreach(Wetterstation wert in w)
+            {
+                labAusgabe.Text = "Stationsstandort: " + wert.m_Standort + ", Stations Nummer: " + wert.m_Stationsnummer 
+                    + "\nWerte:\n" + wert.m_Wetterwert.ToString();
+            }
+            //labAusgabe.Text = "adsf";
             //WetterList we = new WetterList();
 
         }

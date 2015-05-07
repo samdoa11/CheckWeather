@@ -15,15 +15,11 @@ namespace Web
 
         public Wetterstationenliste()
         {
-<<<<<<< HEAD
             m_Wetterstationen = new List<Wetterstation>();
-=======
-            list = new List<Wetterstation>();
 
             // @Autor: Lisa Schwarz -> Aufruf de ServerConnection Klasse + weitergabe des Links
             m_ServerCon = new ServerConnector(@"http:\\www.zamg.ac.at\ogd\");
             m_ServerCon.saveCSV();
->>>>>>> origin/master
         }
         public int IndexOf(Wetterstation item)
         {
