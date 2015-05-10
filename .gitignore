@@ -156,3 +156,10 @@ $RECYCLE.BIN/
 .DS_Store
 CheckYourWeather/CheckYourWeather/CheckYourWeather.csproj
 *.csproj
+CheckYourWeather/packages/Microsoft.AspNet.WebApi.Client.5.2.3/lib/net45/System.Net.Http.Formatting.xml
+CheckYourWeather/packages/Microsoft.AspNet.WebApi.Client.5.2.3/lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml
+*.nupkg
+CheckYourWeather/packages/Microsoft.AspNet.WebApi.Core.5.2.3/lib/net45/System.Web.Http.xml
+*.transform
+CheckYourWeather/packages/Microsoft.AspNet.WebApi.Owin.5.2.3/lib/net45/System.Web.Http.Owin.xml
+*.XML
