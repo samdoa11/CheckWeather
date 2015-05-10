@@ -12,17 +12,17 @@ namespace Web
     /// </summary>
     public class Wetterwert
     {
-        public float Temperatur { get; set; }
-        public int Luftfeuchtigkeit { get; set; }
-        public float Windgeschwindigkeit { get; set; }
-        public int Windrichtung { get; set; }
-        public float Niederschlag { get; set; }
+        public float? Temperatur { get; set; }
+        public int? Luftfeuchtigkeit { get; set; }
+        public float? Windgeschwindigkeit { get; set; }
+        public int? Windrichtung { get; set; }
+        public float? Niederschlag { get; set; }
         public DateTime Datum { get; set; }
-        public float Taupunkt { get; set; }
-        public float Windspitze { get; set; }
-        public float LuftdurckMeeresniveau { get; set; }
-        public float LuftdruckStationsniveau { get; set; }
-        public int Sonneneinstrahlung { get; set; }
+        public float? Taupunkt { get; set; }
+        public float? Windspitze { get; set; }
+        public float? LuftdurckMeeresniveau { get; set; }
+        public float? LuftdruckStationsniveau { get; set; }
+        public int? Sonneneinstrahlung { get; set; }
 
         //<tr><td>wert</td><td>wert2</td></tr>
 

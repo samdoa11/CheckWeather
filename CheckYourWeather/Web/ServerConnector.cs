@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Serverbindung
+namespace Web
 {
 
     /// <summary>
@@ -34,12 +34,9 @@ namespace Serverbindung
         {
             m_Url = url;
             m_WebClient = new WebClient();
+            m_Speicherort = AppDomain.CurrentDomain.BaseDirectory + "/Data/zamg.csv";
         }
 
-        public ServerConnector()
-        {
-            m_Speicherort = @"F:\Schule\4AHIF\FHKärnten\Projekt\CheckYourWeather\Serververbindung\Serverbindung\Test\test.csv";
-        }
 
         /// <summary>
         /// Die Methode saveCSV() speichert die Daten von der ZAMG auf den Server.

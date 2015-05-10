@@ -7,9 +7,12 @@ namespace Web
 {
     public class Wetterstation
     {
-        private Standort m_Standort;
-        private Wetterwert m_Wetterwert;
-        
+        public Standort Standort { get; set; }
+        public Wetterwert Wetterwert { get; set; }
 
+        public override string ToString()
+        {
+            return Standort.ToString() + Wetterwert.ToString();
+        }
     }
 }
