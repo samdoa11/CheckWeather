@@ -5,8 +5,10 @@
 
     <div class="row">
        <p>
-            <asp:Button class="btn" ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+            <asp:Button class="btn" ID="Button1" runat="server" OnClick="Button1_Click" Text="Get Data from ZAMG" />
             <asp:Label ID="labAusgabe" runat="server"></asp:Label>
+           
+           <asp:Table CssClass="table" ID="tableZAMG" runat="server"></asp:Table>
         </p>
         
     </div>

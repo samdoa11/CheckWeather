@@ -8,6 +8,9 @@ using Web.Classes;
 
 namespace Web
 {
+    /// <summary>
+    /// Class that handles events from the aspx site
+    /// </summary>
     public partial class _Default : Page
     {
         private Wetterstationenliste m_liste;
@@ -15,27 +18,27 @@ namespace Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.m_liste = new Wetterstationenliste();
 
-            this.createOutput();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //@Autor Lisa Schwarz
-            Wetterstationenliste w = new Wetterstationenliste();
+            this.m_liste = new Wetterstationenliste();
 
-            //labAusgabe.Text = "adsf";
-            //WetterList we = new WetterList();
-
+            this.createOutputZAMG();
         }
 
-        public void createOutput()
+        /// <summary>
+        /// Methode erstellt den Output der ZAMG Daten
+        /// </summary>
+        public void createOutputZAMG()
         {
+            String output = "<table class='table'>";
             foreach (Wetterstation wert in this.m_liste)
             {
-                labAusgabe.Text += wert.ToString();
+                output += wert.ToString();
             }
+            labAusgabe.Text = output;
         }
     }
 }

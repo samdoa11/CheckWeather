@@ -117,7 +117,13 @@ namespace Web
                             float temperatur = Convert.ToSingle(sfeld[5]); // in °C
                             float taupunkt = Convert.ToSingle(sfeld[6]); // in °C
                             int relativeLF = Convert.ToInt32(sfeld[7]); // in %
-                            int windrichtung = Convert.ToInt32(sfeld[8]); // in °
+
+                            int windrichtung = 0;
+                            if (sfeld[8] != "")
+                            {
+                                windrichtung = Convert.ToInt32(sfeld[8]); // in °
+                            }
+                            
                             float windgeschwindigkeit = Convert.ToSingle(sfeld[9]); // in km/h
                             // Windspitze kann auch NULL sein
                             int? windspitzenrichtung = 0;// in °
