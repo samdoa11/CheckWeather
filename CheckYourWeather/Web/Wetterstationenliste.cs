@@ -134,26 +134,26 @@ namespace Web
                             
                             float windspitzengesch = Convert.ToSingle(sfeld[11]); // in km/h
                             // NULL-Wert möglich
-                  float? niederschlag  = 0;
+                            float? niederschlag  = 0;
                             if (sfeld[12] != "") 
                               niederschlag = Convert.ToSingle(sfeld[12]); // in l/m²
 
                             float? luftdruckMeeresniveau = 0;
                             if (sfeld[13] != "") 
-                    Convert.ToSingle(sfeld[13]); // in hPa (hektoPascal)
+                            Convert.ToSingle(sfeld[13]); // in hPa (hektoPascal)
                 
                             float luftdruckStation = Convert.ToSingle(sfeld[14]); // in hPa (hektoPascal)
                             int sonneneinstrahlung = Convert.ToInt32(sfeld[15]); // in %
 
                             Wetterwert wwert = new Wetterwert
                             {
-                                Datum = messdatum,
+                                Messdatum = messdatum,
                                 Temperatur = temperatur,
                                 Taupunkt = taupunkt,
-                                Luftfeuchtigkeit = relativeLF,
+                                RelativeLuftfeuchtigkeit = relativeLF,
                                 Windrichtung = windrichtung,
                                 Windgeschwindigkeit = windgeschwindigkeit,
-                                Windspitze = windspitzenrichtung,
+                                Windspitzenrichtung = windspitzenrichtung,
                                 Niederschlag = niederschlag,
                                 LuftdurckMeeresniveau = luftdruckMeeresniveau,
                                 LuftdruckStationsniveau = luftdruckStation,
