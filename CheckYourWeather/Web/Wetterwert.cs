@@ -29,7 +29,21 @@ namespace Web
 
         public override string ToString()
         {
-                return String.Format("<tr>"
+                return String.Format("<table><tr>"
+                +"<td>Datum</td>"
+                +"<td>Temperatur</td>"
+                +"<td>Taupunkt</td>"
+                +"<td>Relative Luftfeuchtigkeit</td>"
+                +"<td>Windrichtung</td>"
+                +"<td>Windgeschwindigkeit</td>"
+                +"<td>Windspitzenrichtung</td>"
+                +"<td>Windspitzengeschwindigkeit</td>"
+                +"<td>Luftdruck Meeresniveau</td>"
+                +"<td>Luftdruck Stationsniveau</td>"
+                +"<td>Niederschlag</td>"
+                +"<td>Sonneneinstrahlung</td></tr>"
+
+                + "<tr>"
                 +"<td>{0}</td>" // Datum
                 +"<td>{1}</td>" // Temperatur
                 +"<td>{2}</td>" // Taupunkt
@@ -42,7 +56,9 @@ namespace Web
                 +"<td>{9}</td>" // LD Stationsniveau
                 +"<td>{10}</td>" // Niederschlag
                 +"<td>{11}</td>" // Sonneneinstrahlung
-                +"</tr>",
+                +"</tr>"
+                +"</table>",
+                
                 Messdatum,
                 Temperatur,
                 Taupunkt,
