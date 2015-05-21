@@ -36,17 +36,17 @@ namespace Web
             String output = "<table class='table'>";
             output += "<tr><th>Stationsname</th>"
                 + "<th>Datum</th>"
-                + "<th>Temperatur</th>"
-                + "<th>Taupunkt</th>"
-                + "<th>Relative Luftfeuchtigkeit</th>"
+                + "<th>Temperatur (°C)</th>"
+                + "<th>Taupunkt (°C)</th>"
+                + "<th>Relative Luftfeuchtigkeit (%)</th>"
                 + "<th>Windrichtung</th>"
-                + "<th>Windgeschwindigkeit</th>"
-                + "<th>Windspitzenrichtung</th>"
-                + "<th>Windspitzengeschwindigkeit</th>"
-                + "<th>Lufthruck Meeresniveau</th>"
-                + "<th>Lufthruck Stationsniveau</th>"
-                + "<th>Niederschlag</th>"
-                + "<th>Sonneneinstrahlung</th></tr>";
+                + "<th>Windgeschwindigkeit (km/h)</th>"
+                + "<th>Windspitzenrichtung (°)</th>"
+                + "<th>Windspitzengeschwindigkeit (km/h)</th>"
+                + "<th>Lufthruck Meeresniveau (hPa)</th>"
+                + "<th>Lufthruck Stationsniveau (hPa)</th>"
+                + "<th>Niederschlag (l/m²)</th>"
+                + "<th>Sonneneinstrahlung (%)</th></tr>";
             foreach (Wetterstation wert in this.m_liste)
             {
                 output += wert.ToString();
