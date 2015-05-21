@@ -12,7 +12,7 @@ namespace Web
 
         public override string ToString()
         {
-            return Standort.ToString() + Wetterwert.ToString();
+            return String.Format("<tr><td>{0}</td>{1}</tr>", Standort.ToString(), Wetterwert.ToString());
         }
     }
 }

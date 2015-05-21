@@ -29,8 +29,8 @@ namespace Web
 
         public override string ToString()
         {
-                return String.Format("<tr>"
-                +"<td>{0}</td>" // Datum
+                return String.Format(
+                 "<td>{0}</td>" // Datum
                 +"<td>{1}</td>" // Temperatur
                 +"<td>{2}</td>" // Taupunkt
                 +"<td>{3}</td>" // Relative LF
@@ -41,8 +41,8 @@ namespace Web
                 +"<td>{8}</td>" // Luftdruck Meeresniveau
                 +"<td>{9}</td>" // LD Stationsniveau
                 +"<td>{10}</td>" // Niederschlag
-                +"<td>{11}</td>" // Sonneneinstrahlung
-                +"</tr>",
+                +"<td>{11}</td>", // Sonneneinstrahlung
+                
                 
                 Messdatum,
                 Temperatur,
@@ -63,5 +63,7 @@ namespace Web
         {
             return base.Equals(obj);
         }
+
+
     }
 }

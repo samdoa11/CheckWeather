@@ -21,8 +21,8 @@ namespace Web
 
         public override string ToString()
         {
-            return String.Format("X-Koordinate: {0}, Y-Koordinate: {1}",xKoordinate,
-                yKoordinate);
+
+            return String.Format("{0}", Ort);
         }
 
         public override bool Equals(object obj)

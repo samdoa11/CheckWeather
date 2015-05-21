@@ -104,11 +104,12 @@ namespace Web
             List<String> input = this.m_DAL.readOut();
               foreach (string str in input)
                         {
-                            str.Trim('"');
                             String[] sfeld = str.Split(';');
                             // Station
                             int? stationsnummer = ConvertStringToIntNull(sfeld[0]);
-                            string ortsname = ConvertStringToStringNull(sfeld[1]);
+                            string hv = ConvertStringToStringNull(sfeld[1]);
+                            string[] hilfsfeld = hv.Split('"');
+                            string ortsname = hilfsfeld[1]; // wegen " und \ war ein Split durchzuführen
                             int? seehoehe = ConvertStringToIntNull(sfeld[2]); // in Meter
 
                             // Wetterdaten (nach reihenfolge in csv-datei)
