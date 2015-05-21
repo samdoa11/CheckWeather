@@ -42,8 +42,7 @@ namespace Web
                 +"<td>{9}</td>" // LD Stationsniveau
                 +"<td>{10}</td>" // Niederschlag
                 +"<td>{11}</td>" // Sonneneinstrahlung
-                +"</tr>"
-                +"</table>",
+                +"</tr>",
                 
                 Messdatum,
                 Temperatur,
