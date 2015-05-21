@@ -113,7 +113,15 @@ namespace Web
 
                             // Wetterdaten (nach reihenfolge in csv-datei)
                             //DateTime messdatum = Convert.ToDateTime(sfeld[3]); // Datum und Zeit der Messung
-                            DateTime messdatum = new DateTime();
+                            string[] datum = sfeld[3].Split('-', '"');
+                            int tag = Convert.ToInt32(datum[1]);
+                            int monat = Convert.ToInt32(datum[2]);
+                            int jahr = Convert.ToInt32(datum[3]);
+                            string[] zeit = sfeld[4].Split(':', '"');
+                            int stunde = Convert.ToInt32(zeit[1]);
+                            int minute = Convert.ToInt32(zeit[2]);
+                            DateTime messdatum = new DateTime(jahr, monat, tag, stunde, minute, 0);
+                            
                             float? temperatur = ConvertStringToFloatNull(sfeld[5]); // in °C
                             float? taupunkt = ConvertStringToFloatNull(sfeld[6]); // in °C
                             int? relativeLF = ConvertStringToIntNull(sfeld[7]); // in %
