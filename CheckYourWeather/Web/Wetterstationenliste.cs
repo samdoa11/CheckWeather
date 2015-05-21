@@ -107,43 +107,31 @@ namespace Web
                             str.Trim('"');
                             String[] sfeld = str.Split(';');
                             // Station
-                            int stationsnummer = Convert.ToInt32(sfeld[0]);
-                            string ortsname = sfeld[1];
-                            int seehoehe = Convert.ToInt32(sfeld[2]); // in Meter
+                            int? stationsnummer = ConvertStringToIntNull(sfeld[0]);
+                            string ortsname = ConvertStringToStringNull(sfeld[1]);
+                            int? seehoehe = ConvertStringToIntNull(sfeld[2]); // in Meter
 
                             // Wetterdaten (nach reihenfolge in csv-datei)
                             //DateTime messdatum = Convert.ToDateTime(sfeld[3]); // Datum und Zeit der Messung
                             DateTime messdatum = new DateTime();
-                            float temperatur = Convert.ToSingle(sfeld[5]); // in °C
-                            float taupunkt = Convert.ToSingle(sfeld[6]); // in °C
-                            int relativeLF = Convert.ToInt32(sfeld[7]); // in %
+                            float? temperatur = ConvertStringToFloatNull(sfeld[5]); // in °C
+                            float? taupunkt = ConvertStringToFloatNull(sfeld[6]); // in °C
+                            int? relativeLF = ConvertStringToIntNull(sfeld[7]); // in %
 
-                            int windrichtung = 0;
-                            if (sfeld[8] != "")
-                            {
-                                windrichtung = Convert.ToInt32(sfeld[8]); // in °
-                            }
+                            int? windrichtung = ConvertStringToIntNull(sfeld[8]);
                             
-                            float windgeschwindigkeit = Convert.ToSingle(sfeld[9]); // in km/h
+                            float? windgeschwindigkeit = ConvertStringToFloatNull(sfeld[9]); // in km/h
                             // Windspitze kann auch NULL sein
-                            int? windspitzenrichtung = 0;// in °
-                            if (sfeld[10] != "")
-                            {
-                                windspitzenrichtung = Convert.ToInt32(sfeld[10]); // in °
-                            }
+                            int? windspitzenrichtung = ConvertStringToIntNull(sfeld[10]);// in °
                             
-                            float windspitzengesch = Convert.ToSingle(sfeld[11]); // in km/h
+                            float? windspitzengesch = ConvertStringToFloatNull(sfeld[11]); // in km/h
                             // NULL-Wert möglich
-                            float? niederschlag  = 0;
-                            if (sfeld[12] != "") 
-                              niederschlag = Convert.ToSingle(sfeld[12]); // in l/m²
+                            float? niederschlag = ConvertStringToFloatNull(sfeld[12]); ;// in l/m²
 
-                            float? luftdruckMeeresniveau = 0;
-                            if (sfeld[13] != "") 
-                            Convert.ToSingle(sfeld[13]); // in hPa (hektoPascal)
+                            float? luftdruckMeeresniveau = ConvertStringToFloatNull(sfeld[13]);// in hPa (hektoPascal)
                 
-                            float luftdruckStation = Convert.ToSingle(sfeld[14]); // in hPa (hektoPascal)
-                            int sonneneinstrahlung = Convert.ToInt32(sfeld[15]); // in %
+                            float? luftdruckStation = ConvertStringToFloatNull(sfeld[14]); // in hPa (hektoPascal)
+                            int? sonneneinstrahlung = ConvertStringToIntNull(sfeld[15]); // in %
 
                             Wetterwert wwert = new Wetterwert
                             {
@@ -173,5 +161,40 @@ namespace Web
                         }
                
                     }
-                }
+
+        /// <summary>
+        /// Wandelt einen String in eine ganze Zahl um. NULL-Wert möglich.
+        /// von grudoa11
+        /// </summary>
+        /// <param name="s">umzuwandelte String</param>
+        /// <returns>int?</returns>
+        private int? ConvertStringToIntNull(string s)
+        {
+            try { return Convert.ToInt32(s); }
+            catch { return null; }
         }
+        /// <summary>
+        /// Wandelt einen String in einen String um bei dem ein NULL-Wert möglich ist.
+        /// von grudoa11
+        /// </summary>
+        /// <param name="s">umzuwandelte String</param>
+        /// <returns>string?</returns>
+        private string ConvertStringToStringNull(string s)
+        {
+            try { return s.ToString(); }
+            catch { return ""; }
+        }
+
+        /// <summary>
+        /// Wandelt einen String in eine float-Zahl um bei dem ein NULL-Wert möglich ist.
+        /// von grudoa11
+        /// </summary>
+        /// <param name="s">umzuwandelte String</param>
+        /// <returns>string?</returns>
+        private float? ConvertStringToFloatNull(string s)
+        {
+            try { return Convert.ToSingle(s); }
+            catch { return null; }
+        }
+    }
+}
