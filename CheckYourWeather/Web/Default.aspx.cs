@@ -34,6 +34,19 @@ namespace Web
         public void createOutputZAMG()
         {
             String output = "<table class='table'>";
+            output += "<tr>"
+                + "<th>Datum</th>"
+                + "<th>Temperatur</th>"
+                + "<th>Taupunkt</th>"
+                + "<th>Relative Luftfeuchtigkeit</th>"
+                + "<th>Windrichtung</th>"
+                + "<th>Windgeschwindigkeit</th>"
+                + "<th>Windspitzenrichtung</th>"
+                + "<th>Windspitzengeschwindigkeit</th>"
+                + "<th>Lufthruck Meeresniveau</th>"
+                + "<th>Lufthruck Stationsniveau</th>"
+                + "<th>Niederschlag</th>"
+                + "<th>Sonneneinstrahlung</th></tr>";
             foreach (Wetterstation wert in this.m_liste)
             {
                 output += wert.ToString();
