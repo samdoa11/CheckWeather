@@ -151,6 +151,7 @@ namespace Web
                                 Windrichtung = windrichtung,
                                 Windgeschwindigkeit = windgeschwindigkeit,
                                 Windspitzenrichtung = windspitzenrichtung,
+                                Windspitzengeschwindigkeit = windspitzengesch,
                                 Niederschlag = niederschlag,
                                 LuftdurckMeeresniveau = luftdruckMeeresniveau,
                                 LuftdruckStationsniveau = luftdruckStation,
