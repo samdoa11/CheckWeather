@@ -39,7 +39,7 @@ namespace Web
                 + "<th>Temperatur (°C)</th>"
                 + "<th>Taupunkt (°C)</th>"
                 + "<th>Relative Luftfeuchtigkeit (%)</th>"
-                + "<th>Windrichtung</th>"
+                + "<th>Windrichtung (°)</th>"
                 + "<th>Windgeschwindigkeit (km/h)</th>"
                 + "<th>Windspitzenrichtung (°)</th>"
                 + "<th>Windspitzengeschwindigkeit (km/h)</th>"
