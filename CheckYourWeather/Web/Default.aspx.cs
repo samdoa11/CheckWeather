@@ -34,7 +34,7 @@ namespace Web
         public void createOutputZAMG()
         {
             String output = "<table class='table'>";
-            output += "<tr>"
+            output += "<tr><th>Stationsname</th>"
                 + "<th>Datum</th>"
                 + "<th>Temperatur</th>"
                 + "<th>Taupunkt</th>"
