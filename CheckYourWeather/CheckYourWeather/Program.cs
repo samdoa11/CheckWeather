@@ -30,6 +30,18 @@ namespace CheckYourWeather
             List<int> idListKomponente = stmk.getIds();
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey(true);
+            ServerConnectorLandSteiermark con = new ServerConnectorLandSteiermark();
+            foreach (int id in idList)
+            {
+                String link = "http://app.luis.steiermark.at/luft2/export.php?station1="+id +
+                    "&station2&komponente1=8&station3=&station4=&komponente2=&von_tag=" + DateTime.Now.Day+
+                    "&von_monat=" + DateTime.Now.Month + "&von_jahr=" + DateTime.Now.Year +
+                    "&mittelwert=1&bis_tag=" + DateTime.Now.Day + "&bis_monat=" + DateTime.Now.Month +
+                    "&bis_jahr=" + DateTime.Now.Year;
+                
+                con.saveCSV(link, id);
+            }
+
 
         }
     }
