@@ -17,6 +17,7 @@ namespace Web.Classes
     /// Klasse für das Auslesen einer Datei
     /// Author Dominik Sammer
     /// </summary>
+    ///
     public class DAL
     {
         private FileStream m_FileStream;
@@ -27,18 +28,13 @@ namespace Web.Classes
         {
             this.m_FilePath = pfad;
             this.m_FileStream = new FileStream(this.m_FilePath, FileMode.Open, FileAccess.ReadWrite);
-<<<<<<< HEAD
-
-=======
             this.m_StreamReader = new StreamReader(this.m_FileStream);
             leseExcel();
->>>>>>> origin/master
         }
 
         //Returns List of Strings from the filecontent
         public List<String> readOut()
         {
-            this.m_StreamReader = new StreamReader(this.m_FileStream);
             List<String> zeilen = new List<string>();
             String zeile = "";
             this.m_StreamReader.ReadLine();
@@ -46,8 +42,6 @@ namespace Web.Classes
             {
                 zeilen.Add(zeile);
             }
-
-            this.m_StreamReader.Close();
             return zeilen;
         }
 
@@ -63,7 +57,7 @@ namespace Web.Classes
             #endregion
 
 
-            String[] datanames = Directory.GetFiles(@"" + AppDomain.CurrentDomain + "CheckYourWeather\\Data\\data_stmk\\");
+            String[] datanames = Directory.GetFiles(@"" + AppDomain.CurrentDomain.BaseDirectory + "bin\\Debug\\data_stmk\\");
 
             foreach (string pfad in datanames)
             {
@@ -183,7 +177,7 @@ namespace Web.Classes
                 int anz = slist.Count;
 
                 //Mit Stream-Writer alles in eine CSV Datei
-                var file = AppDomain.CurrentDomain + "CheckYourWeather\\Data\\csv_stmk\\" + id + ".csv";
+                var file = AppDomain.CurrentDomain.BaseDirectory + "bin\\Debug\\csv_stmk\\" + id + ".csv";
 
                 using (var stream = File.CreateText(file))
                 {
