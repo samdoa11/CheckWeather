@@ -17,6 +17,7 @@ namespace Web.Classes
     /// Klasse für das Auslesen einer Datei
     /// Author Dominik Sammer
     /// </summary>
+    ///
     public class DAL
     {
         private FileStream m_FileStream;

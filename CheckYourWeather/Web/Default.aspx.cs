@@ -10,22 +10,37 @@ namespace Web
 {
     /// <summary>
     /// Class that handles events from the aspx site
+    /// 
     /// </summary>
     public partial class _Default : Page
     {
         private Wetterstationenliste m_liste;
-
+        private ServerConnector m_ZamgServer;
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void onDownloadFile(object sender, EventArgs e)
         {
-            this.m_liste = new Wetterstationenliste();
+            
+            // @Autor: Lisa Schwarz -> Aufruf de ServerConnection Klasse + weitergabe des Links
+            this.m_ZamgServer = new ServerConnector("http://www.zamg.ac.at/ogd/");
+            String pfad = this.m_ZamgServer.saveCSV();
+            
+            this.m_liste = new Wetterstationenliste(pfad);
 
-            this.createOutputZAMG();
+            //Session speichert die aktuellen Variablen
+            Session.Add("Wetterwerte", this.m_liste);
+        }
+
+        protected void onShowFile(object sender, EventArgs e)
+        {
+            this.m_liste = (Wetterstationenliste)Session["Wetterwerte"];
+            if (this.m_liste == null) labAusgabe.Text = "Please download the file!";
+            else
+                this.createOutputZAMG();
         }
 
         /// <summary>
