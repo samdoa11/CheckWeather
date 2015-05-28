@@ -9,6 +9,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Net;
 
 namespace Web.Classes
 {
@@ -161,6 +162,14 @@ namespace Web.Classes
             Console.Read();
 
         }
-    
+
+        public DateTime getChangeDate()
+        {
+            string localFilename = AppDomain.CurrentDomain.BaseDirectory + m_FilePath;
+
+            FileInfo info = new FileInfo(localFilename);
+            return info.LastWriteTimeUtc;
+
+        }
     }
 }

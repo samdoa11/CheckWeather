@@ -206,5 +206,10 @@ namespace Web
             try { return Convert.ToSingle(s); }
             catch { return null; }
         }
+
+        private DateTime getChangeDate()
+        {
+            return m_DAL.getChangeDate();
+        }
     }
 }
