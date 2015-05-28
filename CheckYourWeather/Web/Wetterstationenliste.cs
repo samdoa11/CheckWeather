@@ -127,7 +127,7 @@ namespace Web
                             float? taupunkt = ConvertStringToFloatNull(sfeld[6]); // in °C
                             int? relativeLF = ConvertStringToIntNull(sfeld[7]); // in %
 
-                            int? windrichtung = ConvertStringToIntNull(sfeld[8]);
+                            int? windrichtung = ConvertStringToIntNull(sfeld[8]); // °
                             
                             float? windgeschwindigkeit = ConvertStringToFloatNull(sfeld[9]); // in km/h
                             // Windspitze kann auch NULL sein
@@ -151,6 +151,7 @@ namespace Web
                                 Windrichtung = windrichtung,
                                 Windgeschwindigkeit = windgeschwindigkeit,
                                 Windspitzenrichtung = windspitzenrichtung,
+                                Windspitzengeschwindigkeit = windspitzengesch,
                                 Niederschlag = niederschlag,
                                 LuftdurckMeeresniveau = luftdruckMeeresniveau,
                                 LuftdruckStationsniveau = luftdruckStation,
