@@ -40,8 +40,7 @@ namespace Web {
         protected global::System.Web.UI.WebControls.Label labAusgabe;
         
         /// <summary>
-<<<<<<< HEAD
-=======
+
         /// labChangeDate-Steuerelement
         /// </summary>
         /// <remarks>
@@ -51,7 +50,7 @@ namespace Web {
         protected global::System.Web.UI.WebControls.Label labChangeDate;
         
         /// <summary>
->>>>>>> origin/master
+
         /// tableZAMG-Steuerelement
         /// </summary>
         /// <remarks>

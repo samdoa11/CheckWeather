@@ -26,10 +26,11 @@ namespace Web.Classes
 
         public DAL(String pfad)
         {
+            leseExcel();
             this.m_FilePath = pfad;
             this.m_FileStream = new FileStream(this.m_FilePath, FileMode.Open, FileAccess.ReadWrite);
             this.m_StreamReader = new StreamReader(this.m_FileStream);
-            leseExcel();
+            
         }
 
         //Returns List of Strings from the filecontent

@@ -17,11 +17,7 @@ namespace Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> origin/master
             
         }
 
@@ -29,12 +25,7 @@ namespace Web
         {
 
             this.m_liste = new Wetterstationenliste();
-<<<<<<< HEAD
-=======
 
-            
-
->>>>>>> origin/master
             this.createOutputZAMG();
 
             labChangeDate.Text = this.m_liste.getChangeDate();

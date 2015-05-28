@@ -218,7 +218,7 @@ namespace Web
             catch { return null; }
         }
 
-<<<<<<< HEAD
+
         public Boolean GetDataFromStmk()
         {
 
@@ -230,12 +230,12 @@ namespace Web
             return true;
 
         }
-=======
+
         public String getChangeDate()
         {
             return m_DAL.getChangeDate();
         }
 
->>>>>>> origin/master
+
     }
 }
