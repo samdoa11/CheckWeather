@@ -109,18 +109,27 @@ namespace Web
                             int? stationsnummer = ConvertStringToIntNull(sfeld[0]);
                             string hv = ConvertStringToStringNull(sfeld[1]);
                             string[] hilfsfeld = hv.Split('"');
-                            string ortsname = hilfsfeld[1]; // wegen " und \ war ein Split durchzuführen
+
+                            int indexDesOrtes = 0;
+                            if (hilfsfeld.Length >= 1) indexDesOrtes = 1; // Falls die Daten von der ZAMG kommen muss Index 1 genommen werden
+                            string ortsname = hilfsfeld[indexDesOrtes]; // wegen " und \ war ein Split durchzuführen
+                            
                             int? seehoehe = ConvertStringToIntNull(sfeld[2]); // in Meter
 
                             // Wetterdaten (nach reihenfolge in csv-datei)
                             //DateTime messdatum = Convert.ToDateTime(sfeld[3]); // Datum und Zeit der Messung
-                            string[] datum = sfeld[3].Split('-', '"');
-                            int tag = Convert.ToInt32(datum[1]);
-                            int monat = Convert.ToInt32(datum[2]);
-                            int jahr = Convert.ToInt32(datum[3]);
+                            string[] datum = sfeld[3].Split('-', '"', '.');
+                            int indexOfDatum = 0;
+                            if (datum.Length >= 3) indexOfDatum = 1; // Falls ZAMG-Datei
+                            int tag = Convert.ToInt32(datum[indexOfDatum]);
+                            int monat = Convert.ToInt32(datum[indexOfDatum+1]);
+                            int jahr = Convert.ToInt32(datum[indexOfDatum+2]);
+                            
                             string[] zeit = sfeld[4].Split(':', '"');
-                            int stunde = Convert.ToInt32(zeit[1]);
-                            int minute = Convert.ToInt32(zeit[2]);
+                            int indexOfZeit = 0;
+                            if (zeit.Length >= 2) indexOfZeit = 1; // Falls ZAMG-Datei
+                            int stunde = Convert.ToInt32(zeit[indexOfZeit]);
+                            int minute = Convert.ToInt32(zeit[indexOfZeit+1]);
                             DateTime messdatum = new DateTime(jahr, monat, tag, stunde, minute, 0);
                             
                             float? temperatur = ConvertStringToFloatNull(sfeld[5]); // in °C
