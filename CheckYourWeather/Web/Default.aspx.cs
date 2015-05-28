@@ -25,7 +25,6 @@ namespace Web
 
         protected void onDownloadFile(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             
             // @Autor: Lisa Schwarz -> Aufruf de ServerConnection Klasse + weitergabe des Links
             this.m_ZamgServer = new ServerConnector("http://www.zamg.ac.at/ogd/");
@@ -43,16 +42,8 @@ namespace Web
             if (this.m_liste == null) labAusgabe.Text = "Please download the file!";
             else
                 this.createOutputZAMG();
-=======
-
-            this.m_liste = new Wetterstationenliste();
-
-            
-
-            this.createOutputZAMG();
 
             labChangeDate.Text = this.m_liste.getChangeDate();
->>>>>>> origin/master
         }
 
         /// <summary>
