@@ -161,14 +161,23 @@ namespace Web.Classes
             Console.WriteLine("All Data Read");
             Console.Read();
 
+
         }
 
-        public DateTime getChangeDate()
+        public String getChangeDate()
         {
-            string localFilename = AppDomain.CurrentDomain.BaseDirectory + m_FilePath;
+            string localFilename = m_FilePath;
 
-            FileInfo info = new FileInfo(localFilename);
-            return info.LastWriteTimeUtc;
+            if(localFilename.Equals(""))
+            {
+                
+                return "Keine Datei vorhanden";
+            }
+            else
+            {
+                FileInfo info = new FileInfo(localFilename);
+                return "Letze aktualisierte Datei vom: " + info.LastWriteTime.ToString();
+            }
 
         }
     }

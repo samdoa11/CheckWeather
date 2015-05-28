@@ -18,14 +18,20 @@ namespace Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
             this.m_liste = new Wetterstationenliste();
 
+            
+
             this.createOutputZAMG();
+
+            labChangeDate.Text = this.m_liste.getChangeDate();
         }
 
         /// <summary>
