@@ -15,17 +15,22 @@ namespace Web
     {
         private Wetterstationenliste m_liste;
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             this.m_liste = new Wetterstationenliste();
-
             this.createOutputZAMG();
+        }
+
+        protected void OnGetDataFromLandSteiermark(object sender, EventArgs e)
+        {
+
+            this.m_liste.GetDataFromStmk();
         }
 
         /// <summary>

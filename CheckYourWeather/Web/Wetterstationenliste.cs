@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using Web.Classes;
 
@@ -17,6 +18,7 @@ namespace Web
             this.list = new List<Wetterstation>();
 
             // @Autor: Lisa Schwarz -> Aufruf de ServerConnection Klasse + weitergabe des Links
+
             this.m_ZamgServer = new ServerConnector("http://www.zamg.ac.at/ogd/");
             String pfad = this.m_ZamgServer.saveCSV();
             this.m_DAL = new DAL(pfad);
@@ -109,18 +111,27 @@ namespace Web
                             int? stationsnummer = ConvertStringToIntNull(sfeld[0]);
                             string hv = ConvertStringToStringNull(sfeld[1]);
                             string[] hilfsfeld = hv.Split('"');
-                            string ortsname = hilfsfeld[1]; // wegen " und \ war ein Split durchzuführen
+
+                            int indexDesOrtes = 0;
+                            if (hilfsfeld.Length >= 1) indexDesOrtes = 1; // Falls die Daten von der ZAMG kommen muss Index 1 genommen werden
+                            string ortsname = hilfsfeld[indexDesOrtes]; // wegen " und \ war ein Split durchzuführen
+                            
                             int? seehoehe = ConvertStringToIntNull(sfeld[2]); // in Meter
 
                             // Wetterdaten (nach reihenfolge in csv-datei)
                             //DateTime messdatum = Convert.ToDateTime(sfeld[3]); // Datum und Zeit der Messung
-                            string[] datum = sfeld[3].Split('-', '"');
-                            int tag = Convert.ToInt32(datum[1]);
-                            int monat = Convert.ToInt32(datum[2]);
-                            int jahr = Convert.ToInt32(datum[3]);
+                            string[] datum = sfeld[3].Split('-', '"', '.');
+                            int indexOfDatum = 0;
+                            if (datum.Length >= 3) indexOfDatum = 1; // Falls ZAMG-Datei
+                            int tag = Convert.ToInt32(datum[indexOfDatum]);
+                            int monat = Convert.ToInt32(datum[indexOfDatum+1]);
+                            int jahr = Convert.ToInt32(datum[indexOfDatum+2]);
+                            
                             string[] zeit = sfeld[4].Split(':', '"');
-                            int stunde = Convert.ToInt32(zeit[1]);
-                            int minute = Convert.ToInt32(zeit[2]);
+                            int indexOfZeit = 0;
+                            if (zeit.Length >= 2) indexOfZeit = 1; // Falls ZAMG-Datei
+                            int stunde = Convert.ToInt32(zeit[indexOfZeit]);
+                            int minute = Convert.ToInt32(zeit[indexOfZeit+1]);
                             DateTime messdatum = new DateTime(jahr, monat, tag, stunde, minute, 0);
                             
                             float? temperatur = ConvertStringToFloatNull(sfeld[5]); // in °C
@@ -206,5 +217,22 @@ namespace Web
             try { return Convert.ToSingle(s); }
             catch { return null; }
         }
+
+        public Boolean GetDataFromStmk()
+        {
+
+            ServerConnectorLandSteiermark stmk = new ServerConnectorLandSteiermark();
+            Thread thread = new Thread(new ThreadStart(stmk.DownloadDateien));
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            thread.Join();
+            return true;
+
+        }
+        public String getChangeDate()
+        {
+            return m_DAL.getChangeDate();
+        }
+
     }
 }
