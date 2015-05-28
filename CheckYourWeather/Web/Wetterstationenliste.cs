@@ -212,9 +212,10 @@ namespace Web
             catch { return null; }
         }
 
-        private DateTime getChangeDate()
+        public String getChangeDate()
         {
             return m_DAL.getChangeDate();
         }
+
     }
 }

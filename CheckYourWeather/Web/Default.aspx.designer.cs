@@ -40,13 +40,21 @@ namespace Web {
         protected global::System.Web.UI.WebControls.Label labAusgabe;
         
         /// <summary>
+<<<<<<< HEAD
         /// labChangeDat-Steuerelement
+=======
+        /// labChangeDate-Steuerelement
+>>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.Label labChangeDat;
+=======
+        protected global::System.Web.UI.WebControls.Label labChangeDate;
+>>>>>>> origin/master
         
         /// <summary>
         /// tableZAMG-Steuerelement
