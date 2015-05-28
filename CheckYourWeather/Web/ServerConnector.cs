@@ -11,7 +11,6 @@ namespace Web
 
     /// <summary>
     /// @Autor: KOLLER Philipp
-    /// Überarbeitet: Lisa Schwarz
     /// 
     /// m_WebClient: ist für die Verbindung zu der Webseite nötig
     /// m_Url: verwaltet die URL, wo die Daten liegen
