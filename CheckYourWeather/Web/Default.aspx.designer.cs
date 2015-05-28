@@ -13,15 +13,6 @@ namespace Web {
     public partial class _Default {
         
         /// <summary>
-        /// Button1-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
         /// Button2-Steuerelement
         /// </summary>
         /// <remarks>
@@ -29,6 +20,24 @@ namespace Web {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
+        
+        /// <summary>
+        /// btnDownload-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDownload;
+        
+        /// <summary>
+        /// btnAnzeige-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAnzeige;
         
         /// <summary>
         /// labAusgabe-Steuerelement
@@ -40,7 +49,6 @@ namespace Web {
         protected global::System.Web.UI.WebControls.Label labAusgabe;
         
         /// <summary>
-
         /// labChangeDate-Steuerelement
         /// </summary>
         /// <remarks>
@@ -50,7 +58,6 @@ namespace Web {
         protected global::System.Web.UI.WebControls.Label labChangeDate;
         
         /// <summary>
-
         /// tableZAMG-Steuerelement
         /// </summary>
         /// <remarks>

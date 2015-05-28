@@ -28,15 +28,14 @@ namespace Web.Classes
 
         public DAL(String pfad)
         {
-            leseExcel();
-            this.m_FilePath = pfad;
-            this.m_FileStream = new FileStream(this.m_FilePath, FileMode.Open, FileAccess.ReadWrite);
-            
+            //leseExcel(); => Das gehört nur dann aufgerufen wenn User auf Download Land Steiermark Dateien klickt
+            this.m_FilePath = DATAPATH + pfad;
         }
 
         //Returns List of Strings from the filecontent
         public List<String> readOut()
         {
+            this.m_FileStream = new FileStream(this.m_FilePath, FileMode.Open, FileAccess.ReadWrite);
             this.m_StreamReader = new StreamReader(this.m_FileStream);
             List<String> zeilen = new List<string>();
             String zeile = "";
@@ -205,7 +204,7 @@ namespace Web.Classes
 
         public String getChangeDate()
         {
-            string localFilename = m_FilePath;
+            string localFilename = this.m_FilePath;
 
             if(localFilename.Equals(""))
             {

@@ -17,19 +17,42 @@ namespace Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
             this.m_liste = new Wetterstationenliste();
-
-            this.createOutputZAMG();
-
             labChangeDate.Text = this.m_liste.getChangeDate();
+            
+            Session.Add("Wetterwerte", this.m_liste);
         }
+
+
+        protected void onDownloadFile(object sender, EventArgs e)
+        {
+            this.m_liste = (Wetterstationenliste)Session["Wetterwerte"];
+            if (this.m_liste == null)
+            {
+
+            }
+            else
+            {
+                // @Autor: Lisa Schwarz -> Aufruf de ServerConnection Klasse + weitergabe des Links
+                this.m_liste.DownloadZamgFile();
+
+                //Session speichert die aktuellen Variablen
+                Session.Add("Wetterwerte", this.m_liste);
+            }
+        }
+
+        protected void onShowFile(object sender, EventArgs e)
+        {
+            //this.m_liste = (Wetterstationenliste)Session["Wetterwerte"]; => Nicht notwendig, denn wenn es gerade Datei gibt muss man sie nicht nochmal runter laden
+            this.m_liste = new Wetterstationenliste();
+            if (this.m_liste.getChangeDate() == "Keine Datei vorhanden") labAusgabe.Text = "Please download the file!";
+            else
+            {
+                this.m_liste.ConvertCSV();
+                this.createOutputZAMG();
+            }
+        }
+
 
         protected void OnGetDataFromLandSteiermark(object sender, EventArgs e)
         {

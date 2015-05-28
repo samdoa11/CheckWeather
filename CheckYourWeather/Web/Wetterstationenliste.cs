@@ -16,15 +16,22 @@ namespace Web
         public Wetterstationenliste()
         {
             this.list = new List<Wetterstation>();
+            //Dummy DAL
+            this.m_DAL = new DAL("zamg.csv");
 
             // @Autor: Lisa Schwarz -> Aufruf de ServerConnection Klasse + weitergabe des Links
 
+            
+        }
+
+        public void DownloadZamgFile()
+        {
             this.m_ZamgServer = new ServerConnector("http://www.zamg.ac.at/ogd/");
             String pfad = this.m_ZamgServer.saveCSV();
             this.m_DAL = new DAL(pfad);
-            this.ConvertCSV();
             
         }
+
         public int IndexOf(Wetterstation item)
         {
             throw new NotImplementedException();
@@ -227,6 +234,7 @@ namespace Web
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
             thread.Join();
+            this.m_DAL.leseExcel();
             return true;
 
         }

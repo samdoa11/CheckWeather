@@ -27,10 +27,10 @@ namespace Web
         /// Die Methode saveCSV() speichert die Daten von der ZAMG auf den Server.
         /// </summary>
         /// <returns></returns>
-        public void saveCSV(String websitePath, int id)
+        public void saveExcel(String websitePath, int id)
         {
             string remoteFilename = websitePath;
-            string localFilename = AppDomain.CurrentDomain.BaseDirectory +"Data\\data_stmk\\"+ id+".xls";
+            string localFilename = AppDomain.CurrentDomain.BaseDirectory + "Data\\data_stmk\\"+ id+".xls";
 
             using (WebClient webClient = new WebClient())
             {
@@ -64,7 +64,7 @@ namespace Web
                     "&mittelwert=1&bis_tag=" + DateTime.Now.Day + "&bis_monat=" + DateTime.Now.Month +
                     "&bis_jahr=" + DateTime.Now.Year;
 
-                con.saveCSV(link, id);
+                con.saveExcel(link, id);
 
             }
         }
