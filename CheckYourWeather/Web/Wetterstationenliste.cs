@@ -11,21 +11,19 @@ namespace Web
     {
         private List<Wetterstation> list;
         private DAL m_DAL;
+        private ServerConnector m_ZamgServer;
 
-
-        public Wetterstationenliste(string pfad)
+        public Wetterstationenliste()
         {
             this.list = new List<Wetterstation>();
-<<<<<<< HEAD
 
             // @Autor: Lisa Schwarz -> Aufruf de ServerConnection Klasse + weitergabe des Links
 
             this.m_ZamgServer = new ServerConnector("http://www.zamg.ac.at/ogd/");
             String pfad = this.m_ZamgServer.saveCSV();
-=======
->>>>>>> origin/master
             this.m_DAL = new DAL(pfad);
             this.ConvertCSV();
+            
         }
         public int IndexOf(Wetterstation item)
         {
@@ -180,9 +178,8 @@ namespace Web
                             };
 
                             this.list.Add(station);
-                            
+
                         }
-                        
                
                     }
 
@@ -234,11 +231,11 @@ namespace Web
 
         }
 =======
->>>>>>> origin/master
         public String getChangeDate()
         {
             return m_DAL.getChangeDate();
         }
 
+>>>>>>> origin/master
     }
 }
