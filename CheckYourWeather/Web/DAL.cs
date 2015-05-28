@@ -56,7 +56,7 @@ namespace Web.Classes
             #endregion
 
 
-            String[] datanames = Directory.GetFiles(@"" + AppDomain.CurrentDomain + "CheckYourWeather\\Data\\data_stmk\\");
+            String[] datanames = Directory.GetFiles(@"" + AppDomain.CurrentDomain.BaseDirectory + "Data\\data_stmk\\");
 
             foreach (string pfad in datanames)
             {
@@ -176,7 +176,7 @@ namespace Web.Classes
                 int anz = slist.Count;
 
                 //Mit Stream-Writer alles in eine CSV Datei
-                var file = AppDomain.CurrentDomain + "CheckYourWeather\\Data\\csv_stmk\\" + id + ".csv";
+                var file = AppDomain.CurrentDomain.BaseDirectory + "Data\\csv_stmk\\" + id + ".csv";
 
                 using (var stream = File.CreateText(file))
                 {
