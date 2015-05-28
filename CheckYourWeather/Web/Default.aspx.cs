@@ -10,21 +10,52 @@ namespace Web
 {
     /// <summary>
     /// Class that handles events from the aspx site
+    /// 
     /// </summary>
     public partial class _Default : Page
     {
         private Wetterstationenliste m_liste;
+<<<<<<< HEAD
+=======
+        private ServerConnector m_ZamgServer;
+>>>>>>> origin/master
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void onDownloadFile(object sender, EventArgs e)
         {
+            
+            // @Autor: Lisa Schwarz -> Aufruf de ServerConnection Klasse + weitergabe des Links
+            this.m_ZamgServer = new ServerConnector("http://www.zamg.ac.at/ogd/");
+            String pfad = this.m_ZamgServer.saveCSV();
+            
+            this.m_liste = new Wetterstationenliste(pfad);
+
+<<<<<<< HEAD
+            
+=======
+            //Session speichert die aktuellen Variablen
+            Session.Add("Wetterwerte", this.m_liste);
+>>>>>>> origin/master
+        }
+
+        protected void onShowFile(object sender, EventArgs e)
+        {
+<<<<<<< HEAD
             this.m_liste = new Wetterstationenliste();
             this.createOutputZAMG();
+=======
+            this.m_liste = (Wetterstationenliste)Session["Wetterwerte"];
+            if (this.m_liste == null) labAusgabe.Text = "Please download the file!";
+            else
+                this.createOutputZAMG();
+
+            labChangeDate.Text = this.m_liste.getChangeDate();
+>>>>>>> origin/master
         }
 
         protected void OnGetDataFromLandSteiermark(object sender, EventArgs e)

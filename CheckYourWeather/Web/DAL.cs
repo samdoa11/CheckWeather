@@ -17,6 +17,7 @@ namespace Web.Classes
     /// Klasse für das Auslesen einer Datei
     /// Author Dominik Sammer
     /// </summary>
+    ///
     public class DAL
     {
         private FileStream m_FileStream;
@@ -29,8 +30,11 @@ namespace Web.Classes
             this.m_FileStream = new FileStream(this.m_FilePath, FileMode.Open, FileAccess.ReadWrite);
             this.m_StreamReader = new StreamReader(this.m_FileStream);
             leseExcel();
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
         }
 
         //Returns List of Strings from the filecontent
@@ -61,7 +65,11 @@ namespace Web.Classes
             #endregion
 
 
+<<<<<<< HEAD
             String[] datanames = Directory.GetFiles(@"" + AppDomain.CurrentDomain + "CheckYourWeather\\Data\\data_stmk\\");
+=======
+            String[] datanames = Directory.GetFiles(@"" + AppDomain.CurrentDomain.BaseDirectory + "Data\\data_stmk\\");
+>>>>>>> origin/master
 
             foreach (string pfad in datanames)
             {
@@ -181,7 +189,11 @@ namespace Web.Classes
                 int anz = slist.Count;
 
                 //Mit Stream-Writer alles in eine CSV Datei
+<<<<<<< HEAD
                 var file = AppDomain.CurrentDomain + "CheckYourWeather\\Data\\csv_stmk\\" + id + ".csv";
+=======
+                var file = AppDomain.CurrentDomain.BaseDirectory + "Data\\csv_stmk\\" + id + ".csv";
+>>>>>>> origin/master
 
                 using (var stream = File.CreateText(file))
                 {

@@ -16,6 +16,8 @@ namespace Web
     /// m_Url: verwaltet die URL, wo die Daten liegen
     /// m_Speicherort: Der Speicherort wird einmalig im Konstruktor zugewiesen.
     /// </summary>
+    /// 
+
     public class ServerConnector
     {
 

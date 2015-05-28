@@ -13,13 +13,22 @@ namespace Web {
     public partial class _Default {
         
         /// <summary>
-        /// Button1-Steuerelement
+        /// btnDownload-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnDownload;
+        
+        /// <summary>
+        /// btnAnzeige-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAnzeige;
         
         /// <summary>
         /// Button2-Steuerelement
@@ -41,14 +50,24 @@ namespace Web {
         
         /// <summary>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         /// labChangeDate-Steuerelement
+=======
+        /// labChangeDat-Steuerelement
+>>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.Label labChangeDate;
+        
+        /// <summary>
+>>>>>>> origin/master
+=======
+        protected global::System.Web.UI.WebControls.Label labChangeDat;
         
         /// <summary>
 >>>>>>> origin/master
