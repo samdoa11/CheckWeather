@@ -9,6 +9,7 @@ namespace Web
     {
         public Standort Standort { get; set; }
         public Wetterwert Wetterwert { get; set; }
+        public String Wetterstationenorganisation { get; set; }
 
         public override string ToString()
         {
