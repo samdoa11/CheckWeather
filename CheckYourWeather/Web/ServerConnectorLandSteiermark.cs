@@ -15,19 +15,22 @@ namespace Web
     public class ServerConnectorLandSteiermark
     {
         private WebClient m_WebClient;
-
+        private LandSteiermarkPage m_LandSteiermarkPage;
 
         public ServerConnectorLandSteiermark()
         {
             m_WebClient = new WebClient();
+            this.m_LandSteiermarkPage = new LandSteiermarkPage("station1");
         }
 
 
         /// <summary>
-        /// Die Methode saveCSV() speichert die Daten von der ZAMG auf den Server.
+        /// Die Methode saveCSV() speichert die Daten vom Land Steiermark
+        /// auf den Server.
+        /// <param name="websitePath">Url zur Webseite</param>"
+        /// <param name="id">Id der Wetterstation => späterer Dateiname</param>
         /// </summary>
-        /// <returns></returns>
-        public void saveExcel(String websitePath, int id)
+        private void saveExcel(String websitePath, int id)
         {
             string remoteFilename = websitePath;
             string localFilename = AppDomain.CurrentDomain.BaseDirectory + "Data\\data_stmk\\"+ id+".xls";
@@ -45,17 +48,21 @@ namespace Web
             }
         }
 
+        /// <summary>
+        /// Methode ist die Schnittstelle zum Download der Dateien des Landes Steiermark
+        /// Hier werden zuerst die Urls zusammengebaut und anschließend
+        /// wird der Download gestartet und die Datei gespeichert.
+        /// </summary>
         public void DownloadDateien()
         {
             //Ids der Wetterstationen die es gibt
-            LandSteiermark stmk = new LandSteiermark("station1");
-            List<int> idList = stmk.getIds();
+            
+            List<int> idList = this.m_LandSteiermarkPage.GetIds();
 
             //Ids der Komponenten die es gibt
-            stmk = new LandSteiermark("komponente1");
-            List<int> idListKomponente = stmk.getIds();
+            this.m_LandSteiermarkPage.ElementId = "komponente1";
+            List<int> idListKomponente = this.m_LandSteiermarkPage.GetIds();
            
-            ServerConnectorLandSteiermark con = new ServerConnectorLandSteiermark();
             foreach (int id in idList)
             {
                 String link = "http://app.luis.steiermark.at/luft2/export.php?station1=" + id +
@@ -63,23 +70,23 @@ namespace Web
                     "&von_monat=" + DateTime.Now.Month + "&von_jahr=" + DateTime.Now.Year +
                     "&mittelwert=1&bis_tag=" + DateTime.Now.Day + "&bis_monat=" + DateTime.Now.Month +
                     "&bis_jahr=" + DateTime.Now.Year;
-
-                con.saveExcel(link, id);
+              
+                this.saveExcel(link, id);
 
             }
         }
 
     }
 
-       public class LandSteiermark {
+       public class LandSteiermarkPage {
         //Members
-        public const string TestUrl = "http://app.luis.steiermark.at/luft2/suche.php";
+        public const string URL = "http://app.luis.steiermark.at/luft2/suche.php";
         private List<int> m_Ids;
-        private String id;
+        public String ElementId { get; set; }
 
-        public LandSteiermark(String id)
+        public LandSteiermarkPage(String id)
         {
-            this.id = id;
+            this.ElementId = id;
         }
 
         /// <summary>
@@ -90,13 +97,13 @@ namespace Web
         /// @Return: Liste von Ints, bei Fehler wird eine Leere Liste zurückgegeben.
         /// </summary>
 
-        public List<int> getIds()
+        public List<int> GetIds()
         {
             WebBrowser wb = new WebBrowser();
             try
             {
                 wb.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.wb_DocumentCompleted);
-                wb.Navigate(TestUrl);
+                wb.Navigate(URL);
             }
             catch (Exception e)
             {
@@ -122,7 +129,7 @@ namespace Web
 
                 HtmlElement document = wb.Document.GetElementsByTagName("html")[0];
 
-                HtmlElement element = wb.Document.GetElementById(this.id);
+                HtmlElement element = wb.Document.GetElementById(this.ElementId);
 
                 List<int> idList = new List<int>();
                 String s1 = element.InnerHtml;

@@ -12,13 +12,14 @@ namespace Web
         private List<Wetterstation> list;
         private DAL m_DAL;
         private ServerConnector m_ZamgServer;
+        private ServerConnectorLandSteiermark m_LandSteiermark;
 
         public Wetterstationenliste()
         {
             this.list = new List<Wetterstation>();
             //Dummy DAL
             this.m_DAL = new DAL("zamg.csv");
-
+            this.m_LandSteiermark = new ServerConnectorLandSteiermark();
             // @Autor: Lisa Schwarz -> Aufruf de ServerConnection Klasse + weitergabe des Links
 
             
@@ -110,7 +111,7 @@ namespace Web
         /// </summary>
         public void ConvertCSV()
         {
-            List<String> input = this.m_DAL.readOut();
+            List<String> input = this.m_DAL.ReadOut();
               foreach (string str in input)
                         {
                             String[] sfeld = str.Split(';');
@@ -228,9 +229,7 @@ namespace Web
 
         public Boolean GetDataFromStmk()
         {
-
-            ServerConnectorLandSteiermark stmk = new ServerConnectorLandSteiermark();
-            Thread thread = new Thread(new ThreadStart(stmk.DownloadDateien));
+            Thread thread = new Thread(new ThreadStart(this.m_LandSteiermark.DownloadDateien));
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
             thread.Join();
@@ -241,7 +240,7 @@ namespace Web
 
         public String getChangeDate()
         {
-            return m_DAL.getChangeDate();
+            return m_DAL.GetLastChangeDateZamg();
         }
 
 

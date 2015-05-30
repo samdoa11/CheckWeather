@@ -165,3 +165,7 @@ CheckYourWeather/packages/Microsoft.AspNet.WebApi.Owin.5.2.3/lib/net45/System.We
 *.XML
 CheckYourWeather/Web/Data/data_stmk/10.xls
 *.xls
+*.csv
+*.csv
+*.csv
+CheckYourWeather/Web/Data/csv_stmk/114.csv

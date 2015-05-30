@@ -14,8 +14,7 @@ using System.Net;
 namespace Web.Classes
 {
     /// <summary>
-    /// Klasse für das Auslesen einer Datei
-    /// Author Dominik Sammer
+    /// Klasse für Dateioperationen
     /// </summary>
     ///
     public class DAL
@@ -32,8 +31,13 @@ namespace Web.Classes
             this.m_FilePath = DATAPATH + pfad;
         }
 
-        //Returns List of Strings from the filecontent
-        public List<String> readOut()
+        /// <summary>
+        /// @author: Dominik Sammer
+        /// Liest csv Dateien aus.
+        /// Gibt die Zeile für Zeile zurück
+        /// </summary>
+        /// <returns>List mit den Zeilen der Datei</returns>
+        public List<String> ReadOut()
         {
             this.m_FileStream = new FileStream(this.m_FilePath, FileMode.Open, FileAccess.ReadWrite);
             this.m_StreamReader = new StreamReader(this.m_FileStream);
@@ -48,6 +52,9 @@ namespace Web.Classes
             return zeilen;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void leseExcel()
         {
 
@@ -202,7 +209,7 @@ namespace Web.Classes
 
         }
 
-        public String getChangeDate()
+        public String GetLastChangeDateZamg()
         {
             string localFilename = this.m_FilePath;
 
