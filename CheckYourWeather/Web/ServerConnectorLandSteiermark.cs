@@ -30,10 +30,10 @@ namespace Web
         /// <param name="websitePath">Url zur Webseite</param>"
         /// <param name="id">Id der Wetterstation => späterer Dateiname</param>
         /// </summary>
-        private void saveExcel(String websitePath, int id)
+        private void saveExcel(String websitePath, String filename)
         {
             string remoteFilename = websitePath;
-            string localFilename = AppDomain.CurrentDomain.BaseDirectory + "Data\\data_stmk\\"+ id+".xls";
+            string localFilename = AppDomain.CurrentDomain.BaseDirectory + "Data\\data_stmk\\"+ filename+".xls";
 
             using (WebClient webClient = new WebClient())
             {
@@ -61,17 +61,22 @@ namespace Web
 
             //Ids der Komponenten die es gibt
             this.m_LandSteiermarkPage.ElementId = "komponente1";
-            List<int> idListKomponente = this.m_LandSteiermarkPage.GetIds();
+            List<int> idListKomponente = new List<int>(){ 8, 9, 10,14 };
            
             foreach (int id in idList)
             {
-                String link = "http://app.luis.steiermark.at/luft2/export.php?station1=" + id +
-                    "&station2&komponente1=8&station3=&station4=&komponente2=&von_tag=" + DateTime.Now.Day +
+                foreach(int idKomp in idListKomponente)
+                {
+                    String link = "http://app.luis.steiermark.at/luft2/export.php?station1=" + id +
+                    "&station2&komponente1="+idKomp+"&station3=&station4=&komponente2=&von_tag=" + DateTime.Now.Day +
                     "&von_monat=" + DateTime.Now.Month + "&von_jahr=" + DateTime.Now.Year +
                     "&mittelwert=1&bis_tag=" + DateTime.Now.Day + "&bis_monat=" + DateTime.Now.Month +
                     "&bis_jahr=" + DateTime.Now.Year;
-              
-                this.saveExcel(link, id);
+
+                    String name = "File_"+id+"_"+idKomp;
+                    this.saveExcel(link, name);
+                }
+                
 
             }
         }

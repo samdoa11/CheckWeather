@@ -51,37 +51,59 @@ namespace Web.Classes
             this.m_StreamReader.Close();
             return zeilen;
         }
-
+    
         /// <summary>
-        /// 
+        /// Geht Filenamen durch und sortiert pro Wetterstation die Komponente um anschließend ein File für alle Wetterstationen zu erstellen
         /// </summary>
-        public void leseExcel()
+        /// <param name="datanames">Filenamen der Dateien</param>
+        /// <returns>Dictonary mit String als Key (Wetterstationenid) und List<String> als Value mit den Komponentenids</returns>
+        private Dictionary<String, List<String>> GetKomponentsPerWetterstation(String[] datanames)
         {
-
-
-            #region ofd
-            ////Mit OpenFileDialog eine Datei auswählen
-            //OpenFileDialog Import = new OpenFileDialog();
-            //Import.Filter = "Excel-Arbeitsmappe (*.xls;*.xlsx)|*.xls;*.xlsx|All files (*.*)|*.*";
-            //if (Import.ShowDialog() == DialogResult.OK) { Pfad = Import.FileName; }
-            #endregion
-
-
-            String[] datanames = Directory.GetFiles(DATAPATH + "data_stmk\\");
-
-            foreach (string pfad in datanames)
+            Dictionary<String, List<String>> dict = new Dictionary<String, List<String>>();
+            foreach (String pfad in datanames)
             {
                 //Splitten
                 string[] split = pfad.Split(new String[] { "\\" }, StringSplitOptions.RemoveEmptyEntries);
 
-                string id = split[split.Length - 1].Split('.')[0];
+                String id = split[split.Length - 1].Split('.')[0];
 
 
+                //Kompontenten pro wetterstation
+                char[] splChars = new char[] { '_' };
+                String[] gesp = id.Split(splChars);
+
+                if (gesp[1] != null)
+                {
+                    if (dict.Keys.Contains(gesp[1]))
+                    {
+                        dict[gesp[1]].Add(gesp[2]);
+                    }
+                    else
+                    {
+                        dict.Add(gesp[1], new List<string>() { gesp[2] });
+                    }
+                }
+            }
+            return dict;
+        }
+
+        /// <summary>
+        /// @author: Dominic Groß
+        /// Opens all Excel files von einer einzigen Wetterstation (mehrere Komponeten)
+        /// </summary>
+        /// <param name="pfad"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private String OpenTheExcelFile(List<String> dateipfaede, String id)
+        {
+            List<String[]> slist = new List<String[]>();
+            String dateiinhalt = "";
+            foreach (String pfad in dateipfaede)
+            {
                 //Variablen die Excel benötigt
                 Excel._Application app = new Excel.Application(); //Die Excel-Applikation
                 Excel.Workbook book = null; //Das Workbook
                 Excel.Worksheet sheet = null; //Das Worksheet
-
 
                 //Öffnen
                 book = app.Workbooks.Open(pfad);
@@ -147,10 +169,9 @@ namespace Web.Classes
                 //}
                 #endregion
 
-                List<String[]> slist = new List<String[]>();
 
 
-                for (int i = 5; i <= myExcelFileValues.GetLength(0); i++)
+                for (int i = myExcelFileValues.GetLength(0); i > myExcelFileValues.GetLength(0) - 2; i--)
                 {
                     String[] sfeld = new String[5];
                     for (int j = 1; j <= myExcelFileValues.GetLength(1); j++)
@@ -177,27 +198,91 @@ namespace Web.Classes
                             }
                         }
 
-                        Console.Write(myExcelFileValues[i, j] + "\t");
 
                     }
                     slist.Add(sfeld);
-                    Console.WriteLine();
 
                 }
-                int anz = slist.Count;
 
-                //Mit Stream-Writer alles in eine CSV Datei
-                var file = DATAPATH + "\\csv_stmk\\" + id + ".csv";
 
-                using (var stream = File.CreateText(file))
+            }
+
+            String csvRow = "";
+            for (int i = 0; i < slist.Count(); i++)
+            {
+                csvRow += string.Format("{0};{1};{2};{3};{4}", slist.ElementAt(i)[3], slist.ElementAt(i)[4], slist.ElementAt(i)[0], slist.ElementAt(i)[1], slist.ElementAt(i)[2]);
+            }
+
+            dateiinhalt += csvRow;
+
+            return dateiinhalt;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void leseExcel()
+        {
+
+
+            #region ofd
+            ////Mit OpenFileDialog eine Datei auswählen
+            //OpenFileDialog Import = new OpenFileDialog();
+            //Import.Filter = "Excel-Arbeitsmappe (*.xls;*.xlsx)|*.xls;*.xlsx|All files (*.*)|*.*";
+            //if (Import.ShowDialog() == DialogResult.OK) { Pfad = Import.FileName; }
+            #endregion
+            String[] datanames = Directory.GetFiles(DATAPATH + "data_stmk\\");
+
+            Dictionary<String, List<String>> komponentenProWetterstation = this.GetKomponentsPerWetterstation(datanames);
+            Dictionary<String, List<String>> wetterstationenpfaddict = new Dictionary<string, List<String>>();
+            Dictionary<String, List<String>> wetterstationenDateiinhaltdict = new Dictionary<string, List<string>>();
+
+            //Finde für jede Wetterstation den Dateipfad und speichere in Dictonary
+            foreach(KeyValuePair<String, List<String>> wetterstation in komponentenProWetterstation)
+            {
+                foreach(String komponente in wetterstation.Value)
                 {
-
-                    for (int i = 0; i < slist.Count(); i++)
+                    String dateipfad = DATAPATH + "data_stmk\\File_" + wetterstation.Key + "_" + komponente + ".xls";
+                    if (wetterstationenpfaddict.Keys.Contains(wetterstation.Key))
                     {
+                        wetterstationenpfaddict[wetterstation.Key + "-" + wetterstation.Value].Add(dateipfad);
+                    }
+                    else
+                    {
+                        wetterstationenpfaddict.Add(wetterstation.Key + "-" + komponente, new List<string>() { dateipfad });
+                    }
+                }
+            }
 
-                        string csvRow = string.Format("{0};{1};;{2};{3};{4};;;;;;;;;;", slist.ElementAt(i)[3], slist.ElementAt(i)[4], slist.ElementAt(i)[0], slist.ElementAt(i)[1], slist.ElementAt(i)[2]);
+            //Ein Dictonary mit allen Werten
+            foreach (KeyValuePair<String, List<String>> wetterstationDateipfad in wetterstationenpfaddict)
+            {
+                    String id = wetterstationDateipfad.Key;
 
-                        stream.WriteLine(csvRow);
+                    String slist = this.OpenTheExcelFile(wetterstationDateipfad.Value, id);
+
+                    if (wetterstationenDateiinhaltdict.Keys.Contains(id))
+                    {
+                        wetterstationenDateiinhaltdict[id].Add(slist);
+                    } else
+                    {
+                        wetterstationenDateiinhaltdict.Add(id, new List<string>() { slist });
+                    }
+            }
+
+            //Abspeichern in eine CSV Datei
+
+            ////Mit Stream-Writer alles in eine CSV Datei
+            var file = DATAPATH + "\\landSteiermarkAlleStationen.csv";
+
+            using (var stream = File.CreateText(file))
+            {
+                foreach (KeyValuePair<String, List<String>> wetterstationinhalt in wetterstationenDateiinhaltdict)
+                {
+                    foreach (String zeile in wetterstationinhalt.Value)
+                    {
+                        stream.WriteLine(zeile);
                     }
                 }
             }

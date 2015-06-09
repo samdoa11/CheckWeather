@@ -169,3 +169,4 @@ CheckYourWeather/Web/Data/data_stmk/10.xls
 *.csv
 *.csv
 CheckYourWeather/Web/Data/csv_stmk/114.csv
+CheckYourWeather/Web/DAL.cs

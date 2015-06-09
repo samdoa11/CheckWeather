@@ -229,10 +229,10 @@ namespace Web
 
         public Boolean GetDataFromStmk()
         {
-            Thread thread = new Thread(new ThreadStart(this.m_LandSteiermark.DownloadDateien));
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-            thread.Join();
+            //Thread thread = new Thread(new ThreadStart(this.m_LandSteiermark.DownloadDateien));
+            //thread.SetApartmentState(ApartmentState.STA);
+            //thread.Start();
+            //thread.Join();
             this.m_DAL.leseExcel();
             return true;
 
