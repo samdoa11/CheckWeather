@@ -62,22 +62,25 @@ namespace Web
             //Ids der Komponenten die es gibt
             this.m_LandSteiermarkPage.ElementId = "komponente1";
             List<int> idListKomponente = new List<int>(){ 8, 9, 10,14 };
-           
-            foreach (int id in idList)
+
+            if (idList != null)
             {
-                foreach(int idKomp in idListKomponente)
+                foreach (int id in idList)
                 {
-                    String link = "http://app.luis.steiermark.at/luft2/export.php?station1=" + id +
-                    "&station2&komponente1="+idKomp+"&station3=&station4=&komponente2=&von_tag=" + DateTime.Now.Day +
-                    "&von_monat=" + DateTime.Now.Month + "&von_jahr=" + DateTime.Now.Year +
-                    "&mittelwert=1&bis_tag=" + DateTime.Now.Day + "&bis_monat=" + DateTime.Now.Month +
-                    "&bis_jahr=" + DateTime.Now.Year;
+                    foreach (int idKomp in idListKomponente)
+                    {
+                        String link = "http://app.luis.steiermark.at/luft2/export.php?station1=" + id +
+                        "&station2&komponente1=" + idKomp + "&station3=&station4=&komponente2=&von_tag=" + DateTime.Now.Day +
+                        "&von_monat=" + DateTime.Now.Month + "&von_jahr=" + DateTime.Now.Year +
+                        "&mittelwert=1&bis_tag=" + DateTime.Now.Day + "&bis_monat=" + DateTime.Now.Month +
+                        "&bis_jahr=" + DateTime.Now.Year;
 
-                    String name = "File_"+id+"_"+idKomp;
-                    this.saveExcel(link, name);
+                        String name = "File_" + id + "_" + idKomp;
+                        this.saveExcel(link, name);
+                    }
+
+
                 }
-                
-
             }
         }
 
